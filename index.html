@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThunderBolt</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="vue-app">
+        <h1>{{greet(' night')}}</h1>
+        <h1>{{name}}</h1>
+        <h1>{{job}}</h1>
+        <p>Welcome to ThunderBolt, your ultimate tool for managing and optimizing your workflow. With ThunderBolt, you
+            can easily organize your tasks, track your progress, and boost your productivity. Whether you're a student,
+            professional, or entrepreneur, ThunderBolt has everything you need to stay on top of your game.
+        </p>
+
+        <h1> Events </h1>
+        <!-- v-on:click is used to listen for click events on the button and execute the add or subtract method when the button is clicked. -->
+        <!--@click can be subsituted for the v-on:click -->
+        <button v-on:click="add(1)"> Add a Year</button>
+        <button v-on:click="subtract(1)"> Subtract a Year</button>
+        <button v-on:dblclick="add(10)"> Add 10 Years</button>
+        <button v-on:dblclick="subtract(10)"> Subtract 10 Years</button>
+
+        <p style="color:red; font-family: 'Times New Roman', Times, serif; font-size: 30px;"> My age is {{age}} </p>
+
+        <div id="canvas" v-on:mousemove="updateCoordinates">
+            {{x}}, {{y}}
+        </div>
+
+        <br><br>
+        <input type="text" v-bind:value="name">
+        <br><br>
+        <a v-bind:href="website">Visit Website</a>
+        <br><br>
+
+        <button @click="start">Get Started</button>
+
+        <p v-html="websiteTag"></p>
+    </div>
+    <script src="app.js"></script>
+
+
+
+</body>
+
+</html>
