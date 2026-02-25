@@ -1,8 +1,8 @@
 new Vue({
     el: '#vue-app',
     data: {
-        name: 'Hello Vue!',
-        job: 'Web Developer',
+        name: '',
+        job: '',
         website: 'https://www.google.com', // dynamic content
         websiteTag: 'https://www.google.comGoogle</a>', // rendered via v-html
         age: 20,
@@ -27,7 +27,7 @@ new Vue({
             this.y = event.offsetY;
         },
         logName: function () {
-            console.log('Your name is ' + this.name);
+            console.log('You entered your name as ' + this.name);
         },
         logAge: function () {
             console.log('Your age is ' + this.age);
