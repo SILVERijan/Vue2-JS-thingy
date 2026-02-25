@@ -7,7 +7,7 @@ new Vue({
         websiteTag: 'https://www.google.comGoogle</a>', // rendered via v-html
         age: 20,
         x: 0,
-        y: 0
+        y: 0,
     },
     methods: {
         greet: function (time) {
@@ -25,6 +25,12 @@ new Vue({
         updateCoordinates: function (event) {
             this.x = event.offsetX;
             this.y = event.offsetY;
+        },
+        logName: function () {
+            console.log('Your name is ' + this.name);
+        },
+        logAge: function () {
+            console.log('Your age is ' + this.age);
         }
     }
 });
