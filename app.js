@@ -46,7 +46,7 @@ new Vue({
             return this.b + this.age;
         },
         total: function () {
-            return this.a + this.b + this.age
+            return this.a + this.b + this.age;
         }
 
     }
