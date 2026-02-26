@@ -4,13 +4,17 @@ new Vue({
         name: '',
         job: '',
         website: 'https://www.google.com', // dynamic content
-        websiteTag: 'https://www.google.comGoogle</a>', // rendered via v-html
-        age: 20,
+        websiteTag: '<a href="https://www.google.com">Google</a>', // rendered via v-html
+        age: 0,
         x: 0,
         y: 0,
+        a: 0,
+        b: 0
     },
+
     methods: {
         greet: function (time) {
+            console.log("something");
             return 'good morning' + time + ' ' + this.name;
         },
         add: function (inc) {
@@ -31,7 +35,19 @@ new Vue({
         },
         logAge: function () {
             console.log('Your age is ' + this.age);
+        },
+    },
+
+    computed: {
+        addToA: function () {
+            return this.a + this.age;
+        },
+        addToB: function () {
+            return this.b + this.age;
+        },
+        total: function () {
+            return this.a + this.b + this.age
         }
+
     }
 });
-``

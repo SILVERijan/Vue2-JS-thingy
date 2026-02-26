@@ -52,10 +52,21 @@
         <input type=" text" v-model="age">
         <span> {{age}}</span>
         <br><br>
-        <script src="app.js"></script>
 
 
+        <h1> Computed Properties </h1>
+        <button v-on:click="a++">Add to A</button>
+        <button v-on:click="b++">Add to B</button>
+        <button v-on:click="total">total</button>
+        <p> A = {{ a }}</p>
+        <p> B = {{ b }}</p>
+        <p> Age + A = {{addToA}}</p>
+        <p> Age + B = {{addToB}}</p>
+        <p> Total = {{total}}</p>
 
+
+    </div>
+    <script src="app.js"></script>
 </body>
 
 </html>
