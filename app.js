@@ -1,3 +1,18 @@
+Vue.component('greeting', {
+    template: '<p> Hello there, I am a {{ name }}. <button v-on:click="changeName">Change Name</button> I am {{ age }} years old. </p>',
+    data: function () {
+        return {
+            name: 'YoshiGG',
+            age: 21
+        }
+    },
+    methods: {
+        changeName: function () {
+            this.name = 'Mario';
+        }
+    }
+});
+
 new Vue({
     el: '#vue-app',
     data: {
@@ -11,13 +26,15 @@ new Vue({
         job: '',
         website: 'https://www.google.com', // dynamic content
         websiteTag: '<a href="https://www.google.com">Google</a>', // rendered via v-html
-        age: 0,
+        age: 30,
         x: 0,
         y: 0,
         a: 0,
         b: 0,
         available: false,
         nearby: false,
+        punchBagHealth: 100,
+        ended: false,
     },
 
     methods: {
@@ -44,6 +61,16 @@ new Vue({
         logAge: function () {
             console.log('Your age is ' + this.age);
         },
+        punch: function () {
+            this.punchBagHealth -= 10;
+            if (this.punchBagHealth <= 0) {
+                this.ended = true;
+            }
+        },
+        restart: function () {
+            this.punchBagHealth = 100;
+            this.ended = false;
+        }
     },
 
     computed: {
@@ -61,7 +88,7 @@ new Vue({
                 available: this.available,
                 nearby: this.nearby
             }
-        }
+        }                       
 
     }
 });

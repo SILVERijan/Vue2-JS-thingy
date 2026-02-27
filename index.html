@@ -14,10 +14,7 @@
         <h1>{{greet(' night')}}</h1>
         <h1>{{name}}</h1>
         <h1>{{job}}</h1>
-        <p>Welcome to ThunderBolt, your ultimate tool for managing and optimizing your workflow. With ThunderBolt, you
-            can easily organize your tasks, track your progress, and boost your productivity. Whether you're a student,
-            professional, or entrepreneur, ThunderBolt has everything you need to stay on top of your game.
-        </p>
+        <greeting></greeting>
 
         <h1> Events </h1>
         <!-- v-on:click is used to listen for click events on the button and execute the add or subtract method when the button is clicked. -->
@@ -41,7 +38,7 @@
 
         <button @click="start">Get Started</button>
 
-        <p v-html="websiteTag"></p> 
+        <p v-html="websiteTag"></p>
 
         <h1> Keyboard Events </h1>
         <label> Name: </label>
@@ -90,6 +87,20 @@
             </li>
         </ul>
 
+        <h1> Punching Bag Game it seems </h1>
+
+        <div id="punching-bag" v-on:click="punchingBagHealth--">
+            <div> Punching Bag Health: {{ punchingBagHealth }} </div>
+        </div>
+
+        <div id="bag-health" v-if="punchingBagHealth > 0">
+            <div v-bind:style="{width: punchingBagHealth + '%'}"> The punching bag is still alive! </div>
+        </div>
+
+        <div id="controls">
+            <button v-on:click="punch" v-show="!ended"> Punch </button>
+            <button v-on:click="restart"> Restart </button>
+        </div>
 
 
 
