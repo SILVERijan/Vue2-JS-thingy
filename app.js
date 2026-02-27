@@ -1,7 +1,13 @@
 new Vue({
     el: '#vue-app',
     data: {
-        name: '',
+        name: 'jack',
+        characters: ['Mario', 'Luigi', 'Yoshi', 'Bowser'],
+        ninjas: [
+            { name: 'Ryu', age: 25 },
+            { name: 'Yoshi', age: 15 },
+            { name: 'Ken', age: 20 },
+        ],
         job: '',
         website: 'https://www.google.com', // dynamic content
         websiteTag: '<a href="https://www.google.com">Google</a>', // rendered via v-html
@@ -9,7 +15,9 @@ new Vue({
         x: 0,
         y: 0,
         a: 0,
-        b: 0
+        b: 0,
+        available: false,
+        nearby: false,
     },
 
     methods: {
@@ -47,6 +55,12 @@ new Vue({
         },
         total: function () {
             return this.a + this.b + this.age;
+        },
+        compClasses: function () {
+            return {
+                available: this.available,
+                nearby: this.nearby
+            }
         }
 
     }

@@ -41,7 +41,7 @@
 
         <button @click="start">Get Started</button>
 
-        <p v-html="websiteTag"></p>
+        <p v-html="websiteTag"></p> 
 
         <h1> Keyboard Events </h1>
         <label> Name: </label>
@@ -49,7 +49,7 @@
         <span> {{name}}</span>
         <br><br>
         <label> Age: </label>
-        <input type=" text" v-model="age">
+        <input type="number" v-model="age">
         <span> {{age}}</span>
         <br><br>
 
@@ -63,6 +63,34 @@
         <p> Age + A = {{addToA}}</p>
         <p> Age + B = {{addToB}}</p>
         <p> Total = {{total}}</p>
+
+
+        <h1>Dynamic Css Class</h1>
+        <!-- <h1>Example 1</h1>
+        <div v-on:click="available = !available" v-bind:class="{available: available}">
+            <span>Thunder</span>
+        </div>
+        <h1>Example 2</h1> -->
+        <button v-on:click="nearby = !nearby">Toggle Nearby</button>
+        <button v-on:click="available = !available">Toggle Available</button>
+        <br><br>
+        <div v-bind:class="compClasses">
+            <span>Thunder</span>
+        </div>
+
+        <h1> Lopping Throught Lists </h1>
+        <ul>
+            <li v-for="(character, index) in characters">
+                {{index}}. {{character}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(ninja, index) in ninjas">
+                {{index}}. {{ninja.name}} - {{ninja.age}}
+            </li>
+        </ul>
+
+
 
 
     </div>
