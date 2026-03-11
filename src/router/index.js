@@ -29,6 +29,11 @@ const routes = [
         path: '/advanced',
         name: 'Advanced',
         component: () => import(/* webpackChunkName: "advanced" */ '../views/AdvancedView.vue')
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
     }
 ]
 
