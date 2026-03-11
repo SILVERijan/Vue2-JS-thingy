@@ -6,12 +6,10 @@
     <div class="section">
       <h3>Slots Content Distribution</h3>
       <modal-dialog v-if="showModal" @close="showModal = false">
-        <!-- Using the default slot -->
         <template v-slot:default>
           <p>This is dynamic content passed into the <code>modal-dialog</code> component using <strong>Slots</strong>.</p>
         </template>
         
-        <!-- Named Slot (if our modal supported it, normally syntax is v-slot:footer) -->
         <template v-slot:footer>
           <button @click="showModal = false" class="btn danger">Confirm / Close</button>
         </template>
@@ -35,7 +33,6 @@
         </button>
       </div>
 
-      <!-- <component :is="..."> renders dynamically -->
       <div class="tab-content">
         <component :is="currentTabComponent"></component>
       </div>
@@ -43,7 +40,7 @@
 
     <hr>
     
-    <!-- Lifecycle Hooks Example (Demonstrated in console, plus a prop) -->
+    <!-- Lifecycle Hooks Example -->
     <div class="section">
       <h3>Lifecycle Hooks</h3>
       <p>Check your browser console to see the logs from this view's lifecycle hooks!</p>
@@ -57,7 +54,6 @@
 </template>
 
 <script>
-// Inline components for the Dynamic Components example
 const TabOne = {
   template: '<p>This is the content for <strong>Tab One</strong>. Loaded dynamically!</p>'
 }
@@ -68,7 +64,6 @@ const TabThree = {
   template: '<p>And finally, <strong>Tab Three</strong>.</p>'
 }
 
-// Inline component for the Slot example
 const ModalDialog = {
   template: `
     <div class="modal">
@@ -107,7 +102,6 @@ export default {
       return this.currentTab
     }
   },
-  // --- LIFECYCLE HOOKS ---
   created() {
     console.log('[AdvancedView] created hook called! State and reactivity are ready.')
   },
@@ -122,57 +116,122 @@ export default {
 
 <style scoped>
 .advanced-view {
-  padding: 20px;
+  padding: 10px;
+  animation: fadeIn 0.4s ease-out;
 }
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--surface-border);
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
 .section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--surface-border);
+  padding: 25px;
+  border-radius: 16px;
   margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 .btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.primary { background-color: #42b983; color: white; }
-.danger { background-color: #e74c3c; color: white; }
-
-.modal {
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 10px;
-}
-.modal-footer {
-  margin-top: 15px;
-  text-align: right;
-  border-top: 1px solid #eee;
-  padding-top: 10px;
-}
-
-.tabs {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-.tab-btn {
   padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  background-color: #eee;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+.danger { background: linear-gradient(135deg, #ef4444, #b91c1c); color: white; }
+
+/* Modal CSS styling assuming it gets rendered here */
+.modal {
+  border: 1px solid var(--surface-border);
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 15px;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #fff;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-footer {
+  margin-top: 20px;
+  text-align: right;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+}
+
+/* Segmented Control style tabs */
+.tabs {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.tab-btn {
+  padding: 10px 25px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.tab-btn:hover {
+  color: #fff;
+}
+
 .tab-btn.active {
-  background-color: white;
-  border-bottom: 1px solid white;
-  margin-bottom: -1px;
-  font-weight: bold;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
 }
+
 .tab-content {
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 0 4px 4px 4px;
-  background-color: white;
+  border: 1px solid var(--surface-border);
+  padding: 25px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.3);
+  min-height: 100px;
+  color: var(--text-primary);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+ul {
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+ul li {
+  margin-bottom: 8px;
 }
 </style>

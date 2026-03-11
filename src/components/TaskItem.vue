@@ -15,14 +15,12 @@
 <script>
 export default {
   name: 'TaskItem',
-  // 4: Props - Receiving data from parent component
   props: {
     task: {
       type: Object,
       required: true
     }
   }
-  // This component uses $emit in the template to communicate back to the parent
 }
 </script>
 
@@ -31,31 +29,63 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 15px;
-  margin-bottom: 8px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
 }
+
+.task-item:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.task-item.completed {
+  opacity: 0.7;
+}
+
 .task-item.completed .text {
   text-decoration: line-through;
-  color: #888;
+  color: var(--text-secondary);
 }
+
 .task-content {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-.delete-btn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
+
+/* Custom Checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
+  accent-color: var(--primary);
 }
+
+.text {
+  font-size: 1.05rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.delete-btn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
 .delete-btn:hover {
-  background-color: #c0392b;
+  background: rgba(239, 68, 68, 0.3);
+  color: #fff;
 }
 </style>

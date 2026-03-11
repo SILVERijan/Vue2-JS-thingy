@@ -63,11 +63,9 @@ export default {
     }
   },
   computed: {
-    // Vuex mapGetters allows easy access to store getters in computed properties
     ...mapGetters(['allTasks', 'completedTasks', 'taskCount'])
   },
   methods: {
-    // Vuex mapping
     ...mapMutations({
       commitToggleTask: 'TOGGLE_TASK_STATUS',
       commitDeleteTask: 'DELETE_TASK',
@@ -89,16 +87,12 @@ export default {
         this.newTaskText = ''
       }
     },
-    // Event Handler responding to child component emit
     toggleTask(taskId) {
       this.commitToggleTask(taskId)
     },
-    // Event Handler responding to child component emit
     deleteTask(taskId) {
       this.commitDeleteTask(taskId)
     },
-
-    // Event Modifiers Examples
     handleCardClick() {
       alert("Card area clicked! Event bubbled up.")
     },
@@ -111,59 +105,131 @@ export default {
 
 <style scoped>
 .tasks-view {
-  padding: 20px;
+  padding: 10px;
+  animation: fadeIn 0.4s ease-out;
 }
+
+h2, h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+}
+
 .summary {
   display: flex;
   gap: 20px;
-  margin-bottom: 20px;
-  background-color: #e2f0fb;
-  padding: 10px 20px;
-  border-radius: 6px;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(0, 0, 0, 0.4));
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid var(--surface-border);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
+
+.summary p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.summary strong {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-left: 5px;
+}
+
 .add-task-form {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
+
 .add-task-form input {
   flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--surface-border);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 250px;
 }
+
+.add-task-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
 .btn {
-  padding: 8px 16px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-.primary { background-color: #42b983; color: white; }
-.secondary { background-color: #34495e; color: white; }
-.warning { background-color: #e67e22; color: white; }
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.primary { background: linear-gradient(135deg, #ef4444, #991b1b); color: white; }
+.secondary { background: linear-gradient(135deg, #f87171, #dc2626); color: white; }
+.warning { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
 
 .task-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
+
 .card {
-  border: 1px dashed #ccc;
-  padding: 20px;
-  margin: 20px 0;
-  background-color: #fafafa;
+  border: 1px dashed rgba(239, 68, 68, 0.4);
+  padding: 25px;
+  margin: 25px 0;
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: 12px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.card:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--primary);
+}
+
 .nested-link {
   display: inline-block;
-  background-color: #9b59b6;
+  background: linear-gradient(135deg, #ef4444, #991b1b);
   color: white;
   text-decoration: none;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: transform 0.2s;
 }
+.nested-link:hover {
+  transform: translateY(-2px);
+}
+
 .nested-container {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  min-height: 50px;
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.3);
+  min-height: 80px;
+  padding: 20px;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
 }
 </style>
